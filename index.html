@@ -30,8 +30,19 @@ h1 { font-size: 1.5rem; margin-bottom: 16px; color: #a78bfa; }
 <h1>&#128279; ClawLinks</h1>
 <div class="topic-bar">
 <button class="topic-btn active" onclick="filterTopic(null)">Show all</button>
+<button class="topic-btn" onclick="filterTopic('Uncategorized')">Uncategorized</button>
 </div>
 <div id="links-container">
+<h2 class="topic-heading" id="topic-Uncategorized">Uncategorized</h2>
+<div class="links-group">
+<div class="link-card">
+  <div class="link-info">
+    <a href="https://www.xda-developers.com/claude-chatgpt-gemini-hype-most-interesting-ai-models/" target="_blank" rel="noopener">The Most Interesting AI Models You&#x27;re Not Talking About</a>
+    <div class="link-meta">https://www.xda-developers.com/claude-chatgpt-gemini-hype-most-interesting-ai-models/<br><span>2026-04-27T07:54:49Z</span></div>
+  </div>
+  <button class="delete-btn" onclick="copyRemove('https://www.xda-developers.com/claude-chatgpt-gemini-hype-most-interesting-ai-models/')">&#128465;</button>
+</div>
+</div>
 </div>
 <div id="toast"></div>
 <script>
