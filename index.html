@@ -20,10 +20,21 @@ h1 { font-size: 1.5rem; margin-bottom: 16px; color: #a78bfa; }
 .link-meta span { color: #52525b; }
 .delete-btn { background: none; border: none; font-size: 1.2rem; cursor: pointer; opacity: 0.5; padding: 4px; }
 .delete-btn:hover { opacity: 1; }
+.link-actions { display: flex; gap: 8px; align-items: center; }
+.topic-btn-small { background: #1e1e2e; color: #a78bfa; border: 1px solid #3b3b4f; padding: 4px 10px; border-radius: 6px; cursor: pointer; font-size: 0.8rem; }
+.topic-btn-small:hover { background: #2d2d3f; }
 #toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); background: #7c3aed; color: #fff; padding: 10px 24px; border-radius: 8px; font-size: 0.9rem; opacity: 0; transition: opacity 0.3s; pointer-events: none; }
 #toast.show { opacity: 1; }
 .show-all { background: none; border: 1px solid #3b3b4f; color: #a78bfa; padding: 6px 14px; border-radius: 20px; cursor: pointer; font-size: 0.85rem; }
 @media (max-width: 600px) { body { padding: 10px; } .link-card { flex-direction: column; } }
+#topic-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; z-index: 2000; opacity: 0; pointer-events: none; transition: opacity 0.2s; }
+#topic-modal.show { opacity: 1; pointer-events: auto; }
+#topic-modal .modal { background: #1e1e2e; border: 1px solid #3b3b4f; border-radius: 12px; padding: 20px; width: 90%; max-width: 400px; }
+#topic-modal input { width: 100%; padding: 10px; margin-top: 10px; background: #0f0f13; border: 1px solid #3b3b4f; color: #e4e4e7; border-radius: 6px; font-size: 0.95rem; }
+#topic-modal .modal-buttons { display: flex; gap: 10px; margin-top: 14px; justify-content: flex-end; }
+#topic-modal button { padding: 8px 16px; border-radius: 6px; border: none; cursor: pointer; font-size: 0.9rem; }
+#topic-modal .cancel { background: #2d2d3f; color: #e4e4e7; }
+#topic-modal .confirm { background: #7c3aed; color: #fff; }
 </style>
 </head>
 <body>
@@ -40,97 +51,196 @@ h1 { font-size: 1.5rem; margin-bottom: 16px; color: #a78bfa; }
     <a href="https://www.kdnuggets.com/10-python-libraries-for-building-llm-applications" target="_blank" rel="noopener">10 Python Libraries for Building LLM Applications</a>
     <div class="link-meta">https://www.kdnuggets.com/10-python-libraries-for-building-llm-applications<br><span>2026-04-28T16:07:44Z</span></div>
   </div>
-  <button class="delete-btn" onclick="copyRemove('https://www.kdnuggets.com/10-python-libraries-for-building-llm-applications')">&#128465;</button>
+  <div class="link-actions">
+    <button class="topic-btn-small" onclick="copyTopic('https://www.kdnuggets.com/10-python-libraries-for-building-llm-applications')">🏷 Topic</button>
+    <button class="delete-btn" onclick="copyDelete('https://www.kdnuggets.com/10-python-libraries-for-building-llm-applications')">🗑</button>
+  </div>
 </div>
 <div class="link-card">
   <div class="link-info">
     <a href="https://www.hackster.io/news/david-pride-s-qwatch-is-a-fully-customizable-3d-printable-espressif-esp32-smartwatch-with-style-0734c2d663c0" target="_blank" rel="noopener">David Pride&#x27;s Qwatch Is a Fully-Customizable, 3D-Printable Espressif ESP32 Smartwatch with Style</a>
     <div class="link-meta">https://www.hackster.io/news/david-pride-s-qwatch-is-a-fully-customizable-3d-printable-espressif-esp32-smartwatch-with-style-0734c2d663c0<br><span>2026-04-28T16:08:29Z</span></div>
   </div>
-  <button class="delete-btn" onclick="copyRemove('https://www.hackster.io/news/david-pride-s-qwatch-is-a-fully-customizable-3d-printable-espressif-esp32-smartwatch-with-style-0734c2d663c0')">&#128465;</button>
+  <div class="link-actions">
+    <button class="topic-btn-small" onclick="copyTopic('https://www.hackster.io/news/david-pride-s-qwatch-is-a-fully-customizable-3d-printable-espressif-esp32-smartwatch-with-style-0734c2d663c0')">🏷 Topic</button>
+    <button class="delete-btn" onclick="copyDelete('https://www.hackster.io/news/david-pride-s-qwatch-is-a-fully-customizable-3d-printable-espressif-esp32-smartwatch-with-style-0734c2d663c0')">🗑</button>
+  </div>
 </div>
 <div class="link-card">
   <div class="link-info">
     <a href="https://www.notebookcheck.nl/Deze-kleine-single-board-computer-heeft-een-grote-verrassing-en-het-is-geen-Raspberry-Pi.1277870.0.html" target="_blank" rel="noopener">Deze kleine single-board computer heeft een grote verrassing (en het is geen Raspberry Pi)</a>
     <div class="link-meta">https://www.notebookcheck.nl/Deze-kleine-single-board-computer-heeft-een-grote-verrassing-en-het-is-geen-Raspberry-Pi.1277870.0.html<br><span>2026-04-27T10:51:34Z</span></div>
   </div>
-  <button class="delete-btn" onclick="copyRemove('https://www.notebookcheck.nl/Deze-kleine-single-board-computer-heeft-een-grote-verrassing-en-het-is-geen-Raspberry-Pi.1277870.0.html')">&#128465;</button>
+  <div class="link-actions">
+    <button class="topic-btn-small" onclick="copyTopic('https://www.notebookcheck.nl/Deze-kleine-single-board-computer-heeft-een-grote-verrassing-en-het-is-geen-Raspberry-Pi.1277870.0.html')">🏷 Topic</button>
+    <button class="delete-btn" onclick="copyDelete('https://www.notebookcheck.nl/Deze-kleine-single-board-computer-heeft-een-grote-verrassing-en-het-is-geen-Raspberry-Pi.1277870.0.html')">🗑</button>
+  </div>
 </div>
 <div class="link-card">
   <div class="link-info">
     <a href="https://www.bright.nl/nieuws/2082019/digitaal-fotorolletje-maakt-je-oude-analoge-camera-digitaal.html" target="_blank" rel="noopener">Digitaal fotorolletje maakt je oude analoge camera digitaal</a>
     <div class="link-meta">https://www.bright.nl/nieuws/2082019/digitaal-fotorolletje-maakt-je-oude-analoge-camera-digitaal.html<br><span>2026-04-27T09:07:23Z</span></div>
   </div>
-  <button class="delete-btn" onclick="copyRemove('https://www.bright.nl/nieuws/2082019/digitaal-fotorolletje-maakt-je-oude-analoge-camera-digitaal.html')">&#128465;</button>
+  <div class="link-actions">
+    <button class="topic-btn-small" onclick="copyTopic('https://www.bright.nl/nieuws/2082019/digitaal-fotorolletje-maakt-je-oude-analoge-camera-digitaal.html')">🏷 Topic</button>
+    <button class="delete-btn" onclick="copyDelete('https://www.bright.nl/nieuws/2082019/digitaal-fotorolletje-maakt-je-oude-analoge-camera-digitaal.html')">🗑</button>
+  </div>
 </div>
 <div class="link-card">
   <div class="link-info">
     <a href="https://www.bright.nl/plusplus/2081832/een-plug-in-zonnepaneel-handig-en-goedkoop-zonnestroom-of-toch-gedoe.html" target="_blank" rel="noopener">Een plug-in zonnepaneel: handig en goedkoop zonnestroom, of toch gedoe?</a>
     <div class="link-meta">https://www.bright.nl/plusplus/2081832/een-plug-in-zonnepaneel-handig-en-goedkoop-zonnestroom-of-toch-gedoe.html<br><span>2026-04-28T10:34:32Z</span></div>
   </div>
-  <button class="delete-btn" onclick="copyRemove('https://www.bright.nl/plusplus/2081832/een-plug-in-zonnepaneel-handig-en-goedkoop-zonnestroom-of-toch-gedoe.html')">&#128465;</button>
+  <div class="link-actions">
+    <button class="topic-btn-small" onclick="copyTopic('https://www.bright.nl/plusplus/2081832/een-plug-in-zonnepaneel-handig-en-goedkoop-zonnestroom-of-toch-gedoe.html')">🏷 Topic</button>
+    <button class="delete-btn" onclick="copyDelete('https://www.bright.nl/plusplus/2081832/een-plug-in-zonnepaneel-handig-en-goedkoop-zonnestroom-of-toch-gedoe.html')">🗑</button>
+  </div>
 </div>
 <div class="link-card">
   <div class="link-info">
     <a href="https://www.makeuseof.com/had-claude-chatgpt-and-gemini-each-vibe-code-the-same-chrome-extension/" target="_blank" rel="noopener">Goodbye to the T. rex from Jurassic Park: a new study argues that it didn&#x27;t run like a giant reptile, but with a gait much more similar to that of an ostrich</a>
     <div class="link-meta">https://www.makeuseof.com/had-claude-chatgpt-and-gemini-each-vibe-code-the-same-chrome-extension/<br><span>2026-04-27T08:55:59Z</span></div>
   </div>
-  <button class="delete-btn" onclick="copyRemove('https://www.makeuseof.com/had-claude-chatgpt-and-gemini-each-vibe-code-the-same-chrome-extension/')">&#128465;</button>
+  <div class="link-actions">
+    <button class="topic-btn-small" onclick="copyTopic('https://www.makeuseof.com/had-claude-chatgpt-and-gemini-each-vibe-code-the-same-chrome-extension/')">🏷 Topic</button>
+    <button class="delete-btn" onclick="copyDelete('https://www.makeuseof.com/had-claude-chatgpt-and-gemini-each-vibe-code-the-same-chrome-extension/')">🗑</button>
+  </div>
 </div>
 <div class="link-card">
   <div class="link-info">
     <a href="https://hermes-agent.nousresearch.com/" target="_blank" rel="noopener">Hermes Agent — The Agent That Grows With You</a>
     <div class="link-meta">https://hermes-agent.nousresearch.com/<br><span>2026-04-28T12:06:29Z</span></div>
   </div>
-  <button class="delete-btn" onclick="copyRemove('https://hermes-agent.nousresearch.com/')">&#128465;</button>
+  <div class="link-actions">
+    <button class="topic-btn-small" onclick="copyTopic('https://hermes-agent.nousresearch.com/')">🏷 Topic</button>
+    <button class="delete-btn" onclick="copyDelete('https://hermes-agent.nousresearch.com/')">🗑</button>
+  </div>
 </div>
 <div class="link-card">
   <div class="link-info">
     <a href="https://www.xda-developers.com/tested-local-models-for-same-tasks-each-model-won-at-something-different/" target="_blank" rel="noopener">I tested 3 local LLMs on my actual work — and each model won at something different</a>
     <div class="link-meta">https://www.xda-developers.com/tested-local-models-for-same-tasks-each-model-won-at-something-different/<br><span>2026-04-27T09:09:32Z</span></div>
   </div>
-  <button class="delete-btn" onclick="copyRemove('https://www.xda-developers.com/tested-local-models-for-same-tasks-each-model-won-at-something-different/')">&#128465;</button>
+  <div class="link-actions">
+    <button class="topic-btn-small" onclick="copyTopic('https://www.xda-developers.com/tested-local-models-for-same-tasks-each-model-won-at-something-different/')">🏷 Topic</button>
+    <button class="delete-btn" onclick="copyDelete('https://www.xda-developers.com/tested-local-models-for-same-tasks-each-model-won-at-something-different/')">🗑</button>
+  </div>
 </div>
 <div class="link-card">
   <div class="link-info">
     <a href="https://www.tomsguide.com/ai/i-used-chatgpt-to-apply-warren-buffetts-two-list-rule-and-it-changed-how-i-set-goals" target="_blank" rel="noopener">I used ChatGPT to apply Warren Buffett&#x27;s &#x27;two-list&#x27; rule — and it changed how I set goals | Tom&#x27;s Guide</a>
     <div class="link-meta">https://www.tomsguide.com/ai/i-used-chatgpt-to-apply-warren-buffetts-two-list-rule-and-it-changed-how-i-set-goals<br><span>2026-04-28T12:05:09Z</span></div>
   </div>
-  <button class="delete-btn" onclick="copyRemove('https://www.tomsguide.com/ai/i-used-chatgpt-to-apply-warren-buffetts-two-list-rule-and-it-changed-how-i-set-goals')">&#128465;</button>
+  <div class="link-actions">
+    <button class="topic-btn-small" onclick="copyTopic('https://www.tomsguide.com/ai/i-used-chatgpt-to-apply-warren-buffetts-two-list-rule-and-it-changed-how-i-set-goals')">🏷 Topic</button>
+    <button class="delete-btn" onclick="copyDelete('https://www.tomsguide.com/ai/i-used-chatgpt-to-apply-warren-buffetts-two-list-rule-and-it-changed-how-i-set-goals')">🗑</button>
+  </div>
 </div>
 <div class="link-card">
   <div class="link-info">
     <a href="https://www.nu.nl/tweakers/6392763/oneplus-pad-go-2-is-een-sterke-tablet-voor-weinig-geld.html" target="_blank" rel="noopener">OnePlus Pad Go 2 is een sterke tablet voor weinig geld</a>
     <div class="link-meta">https://www.nu.nl/tweakers/6392763/oneplus-pad-go-2-is-een-sterke-tablet-voor-weinig-geld.html<br><span>2026-04-27T10:14:04Z</span></div>
   </div>
-  <button class="delete-btn" onclick="copyRemove('https://www.nu.nl/tweakers/6392763/oneplus-pad-go-2-is-een-sterke-tablet-voor-weinig-geld.html')">&#128465;</button>
+  <div class="link-actions">
+    <button class="topic-btn-small" onclick="copyTopic('https://www.nu.nl/tweakers/6392763/oneplus-pad-go-2-is-een-sterke-tablet-voor-weinig-geld.html')">🏷 Topic</button>
+    <button class="delete-btn" onclick="copyDelete('https://www.nu.nl/tweakers/6392763/oneplus-pad-go-2-is-een-sterke-tablet-voor-weinig-geld.html')">🗑</button>
+  </div>
 </div>
 <div class="link-card">
   <div class="link-info">
     <a href="https://www.xda-developers.com/claude-chatgpt-gemini-hype-most-interesting-ai-models/" target="_blank" rel="noopener">The Most Interesting AI Models You&#x27;re Not Talking About</a>
     <div class="link-meta">https://www.xda-developers.com/claude-chatgpt-gemini-hype-most-interesting-ai-models/<br><span>2026-04-27T07:54:49Z</span></div>
   </div>
-  <button class="delete-btn" onclick="copyRemove('https://www.xda-developers.com/claude-chatgpt-gemini-hype-most-interesting-ai-models/')">&#128465;</button>
+  <div class="link-actions">
+    <button class="topic-btn-small" onclick="copyTopic('https://www.xda-developers.com/claude-chatgpt-gemini-hype-most-interesting-ai-models/')">🏷 Topic</button>
+    <button class="delete-btn" onclick="copyDelete('https://www.xda-developers.com/claude-chatgpt-gemini-hype-most-interesting-ai-models/')">🗑</button>
+  </div>
 </div>
 <div class="link-card">
   <div class="link-info">
     <a href="https://www.howtogeek.com/the-raspberry-pi-can-now-run-local-ai-models-that-actually-work/" target="_blank" rel="noopener">The Raspberry Pi can now run local AI models that actually work</a>
     <div class="link-meta">https://www.howtogeek.com/the-raspberry-pi-can-now-run-local-ai-models-that-actually-work/<br><span>2026-04-27T08:56:53Z</span></div>
   </div>
-  <button class="delete-btn" onclick="copyRemove('https://www.howtogeek.com/the-raspberry-pi-can-now-run-local-ai-models-that-actually-work/')">&#128465;</button>
+  <div class="link-actions">
+    <button class="topic-btn-small" onclick="copyTopic('https://www.howtogeek.com/the-raspberry-pi-can-now-run-local-ai-models-that-actually-work/')">🏷 Topic</button>
+    <button class="delete-btn" onclick="copyDelete('https://www.howtogeek.com/the-raspberry-pi-can-now-run-local-ai-models-that-actually-work/')">🗑</button>
+  </div>
 </div>
 <div class="link-card">
   <div class="link-info">
     <a href="https://www.techradar.com/pro/near-unlimited-ai-coding-for-usd50-mini-pc-bundle-gives-programmers-up-to-288-000-prompts-over-90-days" target="_blank" rel="noopener">This mini PC deal promises massive AI coding power for cheap, but hidden limits and delays could frustrate developers expecting instant access | TechRadar</a>
     <div class="link-meta">https://www.techradar.com/pro/near-unlimited-ai-coding-for-usd50-mini-pc-bundle-gives-programmers-up-to-288-000-prompts-over-90-days<br><span>2026-04-28T16:06:27Z</span></div>
   </div>
-  <button class="delete-btn" onclick="copyRemove('https://www.techradar.com/pro/near-unlimited-ai-coding-for-usd50-mini-pc-bundle-gives-programmers-up-to-288-000-prompts-over-90-days')">&#128465;</button>
+  <div class="link-actions">
+    <button class="topic-btn-small" onclick="copyTopic('https://www.techradar.com/pro/near-unlimited-ai-coding-for-usd50-mini-pc-bundle-gives-programmers-up-to-288-000-prompts-over-90-days')">🏷 Topic</button>
+    <button class="delete-btn" onclick="copyDelete('https://www.techradar.com/pro/near-unlimited-ai-coding-for-usd50-mini-pc-bundle-gives-programmers-up-to-288-000-prompts-over-90-days')">🗑</button>
+  </div>
 </div>
 </div>
 </div>
 <div id="toast"></div>
+
+<!-- Topic Modal -->
+<div id="topic-modal">
+  <div class="modal">
+    <strong>Add topic</strong>
+    <input type="text" id="topic-input" placeholder="Topic name (e.g. Dev Tools)" />
+    <div class="modal-buttons">
+      <button class="cancel" onclick="cancelTopic()">Cancel</button>
+      <button class="confirm" onclick="confirmTopic()">Copy command</button>
+    </div>
+  </div>
+</div>
 <script>
 const CHANNEL = "https://t.me/+nSNc-C-vq5k3ODI0";
+let pendingTopicUrl = null;
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+function copyDelete(url) {
+  navigator.clipboard.writeText('delete ' + url).then(() => {
+    showToast('Copied! Run: clawlinks.sh delete "' + url + '"');
+  });
+}
+
+function copyTopic(url) {
+  pendingTopicUrl = url;
+  document.getElementById('topic-modal').classList.add('show');
+  document.getElementById('topic-input').focus();
+}
+
+function confirmTopic() {
+  const topic = document.getElementById('topic-input').value.trim();
+  if (!topic) return;
+  if (pendingTopicUrl) {
+    navigator.clipboard.writeText('topic ' + pendingTopicUrl + ' ' + topic).then(() => {
+      showToast('Copied! Run: clawlinks.sh topic "' + pendingTopicUrl + '" "' + topic + '"');
+      pendingTopicUrl = null;
+      document.getElementById('topic-input').value = '';
+      document.getElementById('topic-modal').classList.remove('show');
+    });
+  }
+}
+
+function cancelTopic() {
+  pendingTopicUrl = null;
+  document.getElementById('topic-input').value = '';
+  document.getElementById('topic-modal').classList.remove('show');
+}
+
+// Close modal on Escape or click outside
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') cancelTopic();
+});
+document.getElementById('topic-modal').addEventListener('click', (e) => {
+  if (e.target === e.currentTarget) cancelTopic();
+});
+
 function filterTopic(topic) {
   document.querySelectorAll('.topic-btn').forEach(b => b.classList.remove('active'));
   document.querySelectorAll('.topic-btn').forEach(b => {
@@ -147,15 +257,7 @@ function filterTopic(topic) {
     }
   });
 }
-function copyRemove(url) {
-  navigator.clipboard.writeText('remove ' + url).then(() => {
-    const t = document.getElementById('toast');
-    t.textContent = 'Copied! Open ClawLinks to paste and send';
-    t.classList.add('show');
-    setTimeout(() => t.classList.remove('show'), 3000);
-    window.open(CHANNEL, '_blank');
-  });
-}
+
 setInterval(() => location.reload(), 60000);
 </script>
 </body>
